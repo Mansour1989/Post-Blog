@@ -1,0 +1,18 @@
+<h2>Nouveau Post</h2>
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Titre</label>
+    <input type="text" class="form-control" placeholder="Titre" formControlName="title">
+    <div *ngIf="f.title.touched && f.title.errors?.required" class="cross-validation-error-message alert alert-danger">
+        Titre is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Content</label>
+    <textarea class="form-control"placeholder="Content" formControlName="content"></textarea>
+    <div *ngIf="f.content.touched && f.content.errors?.required" class="cross-validation-error-message alert alert-danger">
+        Content is required.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="goBack()" [disabled]="!postForm.valid">Submit</button>
+</form>
